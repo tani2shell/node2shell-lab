@@ -1,0 +1,26 @@
+services:
+  gateway:
+    build:
+      context: ./app
+    image: node2shell-gateway:r2
+    container_name: node2shell-gateway
+    platform: linux/amd64
+    ports:
+      - "18993:3000"
+    networks:
+      node2shell_net:
+        ipv4_address: 172.31.7.20
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 1g
+    restart: unless-stopped
+
+networks:
+  node2shell_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.7.0/24
+          gateway: 172.31.7.1

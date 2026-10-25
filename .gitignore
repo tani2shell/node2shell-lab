@@ -1,0 +1,7 @@
+# never leak real flags into git history
+app/flags/
+*.flag
+
+# runtime noise
+.DS_Store
+*.log
