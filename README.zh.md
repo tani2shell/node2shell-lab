@@ -71,6 +71,10 @@ docker compose logs -f gateway   # supervisor + worker 日志
 - 本仓库带一份通告文件(`docs/ADVISORY.md`),当它是你唯一的军事情报。读两遍。
 - 旗子从不出现在任何全局可读路径。找到"本不该读得到"的文件,说明你打对了方向。
 
+## 发布后更新（2026-10-26）
+
+微软已于 2026-10-26 为同一 CVE 发布 .NET OOB 紧急安全更新（<https://devblogs.microsoft.com/dotnet/dotnet-october-2026-oob-security-updates/>），实锤洞在跨 runtime 共享的 Brotli 解码器层。MSRC 定级为信息泄露 / DoS / 提权——注意并未承诺 RCE，与本靶收敛口径一致。我们的 .NET 孪生靶实测有个有趣分叉：.NET 托管解码器对该载荷**不崩**——静默吞掉——崩溃原语是原生（Node）构建特有。
+
 ## 提示阶梯
 
 自上而下剥,一次剥一层。

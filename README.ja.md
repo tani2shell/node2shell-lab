@@ -80,6 +80,10 @@ docker compose logs -f gateway   # supervisor + worker ログ
 - フラグは誰でも読めるパスに置かない。「読めるはずがない」ファイルが見つかったら
   方向は合っている。
 
+## 公開後のアップデート（2026-10-26）
+
+Microsoft は 2026-10-26、同一 CVE に対し .NET 向け OOB セキュリティ更新を配信した（<https://devblogs.microsoft.com/dotnet/dotnet-october-2026-oob-security-updates/>）。欠陥がランタイム間で共有される Brotli デコーダ層に存在することの裏付けである。MSRC の定級は情報漏えい / DoS / 権限昇格——RCE は約束しておらず、本ラボの誠実な天井と同じだ。.NET ツインラボの実測では面白い分岐が出た：.NET マネージドデコーダはこのペイロードで**クラッシュしない**——静かに握り潰す——クラッシュ原語はネイティブ（Node）ビルド固有のものである。
+
 ## ヒント梯子
 
 上から 1 段ずつ登る。

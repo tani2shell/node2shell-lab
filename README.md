@@ -86,6 +86,17 @@ docker compose logs -f gateway   # supervisor + worker log stream
 - Flags never appear in any world-readable path. If you find a file you "shouldn't"
   be able to read, you're playing right.
 
+## Post-publication update (2026-10-26)
+
+Microsoft shipped an out-of-band .NET security update for this same CVE on
+2026-10-26 (<https://devblogs.microsoft.com/dotnet/dotnet-october-2026-oob-security-updates/>),
+confirming the flaw lives in the Brotli decoder layer shared across runtimes.
+MSRC scopes it to information disclosure / DoS / elevation of privilege —
+notably *not* promising RCE, same honest ceiling this lab holds you to. Fun
+detail from our .NET twin tests: the managed .NET decoder does **not** crash
+on this payload, it silently swallows it — the crash primitive is specific to
+the native (Node) build.
+
 ## Hint ladder
 
 Work top-down; peel one rung at a time.
